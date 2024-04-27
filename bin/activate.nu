@@ -32,7 +32,7 @@ export-env {
       }
     }
 
-    let virtual_env = '/Users/jcastilloaraujo/Movies/UdeC/proyecto/proyecto'
+    let virtual_env = '/Users/jcastilloaraujo/Documents/UDEC-Soft/flask'
     let bin = 'bin'
 
     let is_windows = ($nu.os-info.family) == 'windows'

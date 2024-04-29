@@ -7,7 +7,7 @@ certifi = certifi.where()
 def conexion():
     try:
         client = MongoClient(Mongo,tlsCAfile=certifi)
-        db =client["bd_productos"]
+        db =client["bd_miembroequipo"]
         print('Conexion Exitosa')
     except ConnectionError:
       print('Error de conexion')

@@ -37,6 +37,10 @@ input[type="text"] {
     border-radius: 5px;
 }
 
+.center-image {
+    text-align: center;
+}
+
 button[type="submit"] {
     display: block;
     width: 100%;

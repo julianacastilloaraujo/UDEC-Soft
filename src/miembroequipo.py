@@ -2,7 +2,7 @@ class MiembroEquipo:
     def __init__(self,  nombre, cargo, habilidades):
         self.nombre = nombre
         self.cargo = cargo
-        self.habilidad = habilidades
+        self.habilidades = habilidades
         
 
     def formato_doc(self):

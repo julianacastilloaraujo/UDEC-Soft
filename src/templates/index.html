@@ -3,9 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Prueba</title>
+    <title>Miembro Equipo</title>
 </head>
 <body>
-    <h1>Index en prueba para Cris</h1>
+    <h1>Bienvenido a tu registro como Miembro de Equipo</h1>
+    <br>
+    <h1>Como empresa UDEC-Soft hemos disenado para ti, este espacio para conocerte mejor</h1>
+    <h2>Aqui debes crear tu perfil en donde incluyas los siguientes datos sobre ti:</h2>
+    <li>Nombre</li>
+    <li>Cargo</li>
+    <li>Habilidades</li>
+    <br>
+    <form action="/guardar_miembroequipo" method="post">
+        <p>Nombre</p>
+        <input type="text" name="nombre">
+        <br>
+        <p>Cargo</p>
+        <input type="text" name="cargo">
+        <br>
+        <p>Habilidades</p>
+        <input type="text" name="habilidades">
+        <br>
+        <button type="submit">Guardar</button>
+    </form>
 </body>
 </html>

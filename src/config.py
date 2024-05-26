@@ -3,7 +3,7 @@ from firebase_admin import credentials, firestore, auth,storage
 import requests
 
 # Inicializa Firestore DB
-firebase_sdk = credentials.Certificate('src/udecsoft-8be27-firebase-adminsdk-wpz3v-9650bee75f')
+firebase_sdk = credentials.Certificate('src/udecsoft-8be27-firebase-adminsdk-wpz3v-9650bee75f.json')
 firebase_admin.initialize_app(firebase_sdk, {
     'storageBucket': 'gs://udecsoft-8be27.appspot.com'
 })
@@ -33,7 +33,7 @@ def registrar_usuario(email, contraseña, rol):
 def iniciar_sesion(email, contraseña):
     try:
         firebase_auth_url = 'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword'
-        api_key = 'AIzaSyC-Hr5qAiA6rjK2f6Sr2PCmdkGwYhqqwus'
+        api_key = 'AIzaSyByJUbyvL6Jv0eCtj9Lb9QS2ZgMck6qvVg'
         payload = {
             'email': email,
             'password': contraseña,

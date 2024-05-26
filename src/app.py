@@ -21,8 +21,7 @@ def agregarMiembro():
     cargo =request.form['cargo']
     habilidades =request.form['habilidades']
 
-    if nombre and cargo and habilidades:
-        return redirect(url_for('index'))
+        
                         
 if __name__ == "__main__":
     app.run(debug=True)

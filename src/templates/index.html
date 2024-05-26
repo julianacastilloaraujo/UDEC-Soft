@@ -1,35 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Miembro Equipo</title>
-    <link rel="stylesheet" href="../static/style.css">
-</head>
-<body>
-    <h1>Bienvenido a tu registro como Miembro de Equipo</h1>
-    <div class="center-image">
-        <img src="../static/logo.svg" alt="Logo"width="200" height="200">
+{% extends 'base.html' %}
+
+{% block title %}Inicio - UDEC SOFT{% endblock %}
+
+{% block content %}
+<section class="hero">
+    <div class="hero-text">
+        <h1>Trabaja en tus proyectos de una manera efectiva!</h1>
+        <p>Registra y trabaja en equipo con los recursos disponibles en nuestra plataforma</p>
+       
     </div>
-    <br>
-    <h1>Como empresa UDEC-Soft hemos disenado para ti, este espacio para conocerte mejor</h1>
-    <h2>Aqui debes crear tu perfil en donde incluyas los siguientes datos sobre ti:</h2>
-    <li>Nombre</li>
-    <li>Cargo</li>
-    <li>Habilidades</li>
-    <br>
-    <form action="/guardar_miembroequipo" method="post">
-        <p>Nombre</p>
-        <input type="text" name="nombre">
-        <br>
-        <p>Cargo</p>
-        <input type="text" name="cargo">
-        <br>
-        <p>Habilidades</p>
-        <input type="text" name="habilidades">
-        <br>
-        <br>
-        <button type="submit">Guardar</button>
-    </form>
-</body>
-</html>
+    <div class="hero-image">
+        <img src="{{ url_for('static', filename='logo.svg') }}" alt="Logo UDEC-Soft" class="main-logo" style="width: 600px; height: auto;">
+    </div>
+</section>
+{% endblock %}

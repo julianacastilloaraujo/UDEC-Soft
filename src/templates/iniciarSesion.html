@@ -1,0 +1,133 @@
+{% extends 'base.html' %}
+
+{% block title %}Iniciar Sesión - UDEC SOFT{% endblock %}
+
+{% block style %}
+<style>
+/* Contenedor para alinear el formulario de inicio de sesión y la sección de registro */
+.login-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: calc(100vh - 160px); /* Altura de la ventana menos la altura del header y el footer */
+    padding: 0 5vw;
+}
+
+/* Contenedor para centrar el formulario de inicio de sesión */
+.login-form {
+    background-color: #111; /* Fondo oscuro */
+    padding: 20px;
+    border-radius: 10px;
+    width: 300px;
+}
+
+/* Estilos para los elementos del formulario */
+.login-form h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #fff;
+}
+
+.login-form input[type="text"],
+.login-form input[type="password"],
+.login-form button {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 10px;
+    box-sizing: border-box; /* Incluye el padding en el ancho total del elemento */
+    border-radius: 5px;
+    border: none;
+}
+
+.login-form input[type="text"],
+.login-form input[type="password"] {
+    background-color: #222; /* Fondo oscuro */
+    color: #fff;
+}
+
+.login-form button {
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+}
+
+.login-form button:hover {
+    background-color: #0056b3;
+}
+
+/* Contenedor para la sección de registro */
+.register-section {
+    text-align: center;
+}
+
+.register-section p {
+    color: #fff;
+}
+
+.register-section a {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.register-section a:hover {
+    background-color: #0056b3;
+}
+
+/* Media query para dispositivos con un ancho máximo de 768px (tablets y móviles) */
+@media (min-width: 1200px) {
+    .login-container {
+        height: calc(100vh - 160px); /* Altura de la ventana menos la altura del header y el footer */
+    }
+
+    .login-form {
+        width: 400px; /* Ancho del formulario */
+    }
+
+    .login-form h2 {
+        font-size: 2.5rem; /* Tamaño del título */
+        margin-bottom: 30px; /* Espacio inferior del título */
+    }
+
+    .login-form input[type="text"],
+    .login-form input[type="password"],
+    .login-form button {
+        padding: 15px; /* Espaciado interno de los campos de entrada y botón */
+        font-size: 1.2rem; /* Tamaño del texto en campos de entrada y botón */
+    }
+
+    .register-section p {
+        font-size: 1.2rem; /* Tamaño del texto en la sección de registro */
+    }
+
+    .register-section a {
+        padding: 12px 24px; /* Espaciado del botón de registro */
+        font-size: 1.2rem; /* Tamaño del texto del botón de registro */
+    }
+}
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="login-container">
+    <div class="login-form">
+        <h2>INICIAR SESIÓN</h2>
+        <form action="{{ url_for('iniciarSesion') }}" method="POST">
+            <input type="text" name="correo" placeholder="Usuario" required>
+            <input type="password" name="password" placeholder="Contraseña" required>
+            <button type="submit">Ingresar</button>
+        </form>
+    </div>
+    <div class="register-section">
+        <img src="{{ url_for('static', filename='logo.svg') }}" alt="Logo UDEC-Soft" class="main-logo" style="width: 400px; height: auto;">
+        <p>¿No estás Registrado?</p>
+        <a href="{{ url_for('registrarse') }}">Registrarse</a>
+    </div>
+</div>
+{% endblock %}
+
+

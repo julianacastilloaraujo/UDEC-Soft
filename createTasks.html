@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+
+{% block title %}Crear - UDEC SOFT{% endblock %}
+
+{% block style %}
+<style>
+    body {
+        font-family: 'Koh', Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #000;
+        color: #fff;
+    }
+
+    .content {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+    form {
+        width: 400px;
+        padding: 20px;
+        background-color: #333;
+        border-radius: 10px;
+    }
+
+    form label {
+        display: block;
+        margin-bottom: 10px;
+        color: #fff;
+    }
+
+    form input,
+    form textarea,
+    form select {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 20px;
+        border: none;
+        background-color: #666;
+        color: #fff;
+        border-radius: 5px;
+    }
+
+    form button {
+        background-color: #007bff;
+        border: none;
+        color: #fff;
+        padding: 15px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 1.2rem;
+        text-decoration: none;
+        text-align: center;
+        display: block;
+        transition: background-color 0.3s;
+    }
+
+    form button:hover {
+        background-color: #0056b3;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="content">
+    <form action="{{ url_for('createTasks', project_id = project_id)}}" method="POST">
+        <label for="titulo">Título:</label>
+        <input type="text" id="titulo" name="titulo" required>
+
+        <label for="descripcion">Descripción:</label>
+        <textarea id="descripcion" name="descripcion" rows="4" required></textarea>
+
+        <label for="fecha">Fecha de vencimiento:</label>
+        <input type="date" id="fecha" name="fecha" required>
+
+        <label for="estado">Estado:</label>
+        <select id="estado" name="estado" required>
+            <option value="En progreso">En progreso</option>
+            <option value="Pendiente">Pendiente</option>
+            <option value="Finalizado">Finalizado</option>
+        </select>
+
+        <button type="submit">Guardar</button>
+    </form>
+</div>
+{% endblock %}

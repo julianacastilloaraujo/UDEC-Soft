@@ -1,4 +1,4 @@
-#!/home/aleky/UdecSoft/env/bin/python
+#!/home/aleky/Udec_soft/env/bin/python
 # -*- coding: utf-8 -*-
 import re
 import sys

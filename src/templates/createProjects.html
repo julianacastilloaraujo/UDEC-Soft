@@ -1,0 +1,218 @@
+{% extends 'base.html' %}
+
+{% block title %}Nuevo Proyecto - UDEC SOFT{% endblock %}
+
+{% block style %}
+<style>
+   .new-project-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 20px;
+        color: #fff;
+    }
+
+    .new-project-container h1 {
+        font-size: 2.5em;
+        margin-bottom: 20px;
+    }
+
+    .new-project-form {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+        background-color: #222;
+        padding: 20px;
+        border-radius: 10px;
+        max-width: 800px;
+        width: 100%;
+    }
+
+    .new-project-form label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+    }
+
+    .new-project-form input[type="text"],
+    .new-project-form input[type="date"],
+    .new-project-form input[type="email"],
+    .new-project-form textarea,
+    .new-project-form select,
+    .new-project-form button {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border-radius: 5px;
+        border: none;
+        background-color: #333;
+        color: #fff;
+        font-size: 1em;
+    }
+
+    .new-project-form textarea {
+        resize: none;
+        height: 100px;
+    }
+
+    .new-project-form button {
+        background-color: #007bff;
+        cursor: pointer;
+    }
+
+    .new-project-form button:hover {
+        background-color: #0056b3;
+    }
+
+    .form-group {
+        flex: 1 1 45%;
+        min-width: 200px;
+    }
+
+    .team-members {
+        flex: 1 1 100%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .team-members label {
+        margin-bottom: 10px;
+    }
+
+    .team-members input,
+    .team-members button {
+        width: calc(100% - 22px);
+    }
+
+    .team-members input {
+        margin-bottom: 10px;
+    }
+
+    .team-members .member-list {
+        list-style: none;
+        padding: 0;
+        margin-top: 10px;
+    }
+
+    .team-members .member-list li {
+        background-color: #333;
+        padding: 10px;
+        border-radius: 5px;
+        margin-bottom: 5px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .team-members .member-list li button {
+        background-color: #dc3545;
+        border: none;
+        padding: 5px 10px; 
+        border-radius: 5px;
+        cursor: pointer;
+        color: #fff;
+        font-size: 0.9em; 
+    }
+
+    .team-members .member-list li button:hover {
+        background-color: #c82333;
+    }
+
+    @media (max-width: 768px) {
+        .form-group {
+            flex: 1 1 100%;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="new-project-container">
+    <h1>Nuevo proyecto 🎨</h1>
+    <form id="new-project-form" action="{{ url_for('createProjects') }}" method="POST" class="new-project-form">
+        <div class="form-group">
+            <label for="nombre">Nombre del proyecto</label>
+            <input type="text" id="nombre" name="nombre" required>
+        </div>
+        <div class="form-group">
+            <label for="fecha_inicio">Fecha de inicio</label>
+            <input type="date" id="fecha_inicio" name="fecha_inicio" required>
+        </div>
+        <div class="form-group">
+            <label for="estado">Estado</label>
+            <select id="estado" name="estado" required>
+                <option value="">Seleccionar estado...</option>
+                <option value="iniciado">Iniciado</option>
+                <option value="en_proceso">En proceso</option>
+                <option value="finalizado">Finalizado</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="fecha_fin">Fecha prevista de fin</label>
+            <input type="date" id="fecha_fin" name="fecha_fin" required>
+        </div>
+        <div class="form-group" style="flex: 1 1 100%;">
+            <label for="descripcion">Descripción</label>
+            <textarea id="descripcion" name="descripcion" required></textarea>
+        </div>
+        <div class="form-group team-members">
+            <label for="miembros">Miembros del equipo</label>
+            <input type="email" id="miembro-input" placeholder="Añadir miembro del equipo por correo electrónico">
+            <button type="button" onclick="addMember()">Añadir miembro</button>
+            <ul class="member-list" id="miembro-list"></ul>
+        </div>
+        <div class="form-group" style="flex: 1 1 100%;">
+            <button type="submit">Crear</button>
+        </div>
+        <!-- Agrega un campo oculto para enviar los miembros como JSON -->
+        <input type="hidden" id="miembros_json" name="miembros_json">
+    </form>
+</div>
+
+<script>
+    let members = [];
+
+    function addMember() {
+        const memberInput = document.getElementById('miembro-input');
+        const memberList = document.getElementById('miembro-list');
+        const memberEmail = memberInput.value.trim();
+
+        if (memberEmail && validateEmail(memberEmail)) {
+            members.push(memberEmail);
+            const li = document.createElement('li');
+            li.innerHTML = `${memberEmail} <button type="button" onclick="removeMember('${memberEmail}')">Eliminar</button>`;
+            memberList.appendChild(li);
+            memberInput.value = '';
+            updateMembersInput();
+        } else {
+            alert('Por favor, ingrese un correo electrónico válido.');
+        }
+    }
+
+    function removeMember(memberEmail) {
+        members = members.filter(m => m !== memberEmail);
+        const memberList = document.getElementById('miembro-list');
+        memberList.innerHTML = '';
+        members.forEach(member => {
+            const li = document.createElement('li');
+            li.innerHTML = `${member} <button type="button" onclick="removeMember('${member}')">Eliminar</button>`;
+            memberList.appendChild(li);
+        });
+        updateMembersInput();
+    }
+
+    function updateMembersInput() {
+        document.getElementById('miembros_json').value = JSON.stringify(members);
+    }
+
+    function validateEmail(email) {
+        const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return re.test(email);
+    }
+
+    document.getElementById('new-project-form').addEventListener('submit', function(event) {
+        updateMembersInput();
+    });
+</script>
+{% endblock %}

@@ -12,30 +12,23 @@
 - **Seguimiento del Progreso**: Monitoreo continuo del avance de los proyectos para asegurar el cumplimiento de los plazos establecidos.
 - **Generación de Reportes y Estadísticas**: Informes detallados y estadísticas visuales para una toma de decisiones informada.
 
+### Contribuciones 🤝
+Las contribuciones son bienvenidas. Por favor, sigue los pasos a continuación para contribuir:
+1. Realiza un fork del repositorio.
+2. Crea una nueva rama (`git checkout -b feature/nueva-funcionalidad`).
+3. Realiza tus cambios y commitea (`git commit -am 'Agrega nueva funcionalidad'`).
+4. Sube los cambios (`git push origin feature/nueva-funcionalidad`).
+5. Abre un Pull Request.
+
+### Licencia 📄
+Este proyecto está bajo la Licencia MIT. Ver el archivo [LICENSE](LICENSE) para más detalles.
+
+### Contacto 📬
+Para más información o preguntas, puedes contactarnos a través de:
+- [@AlekyC](https://github.com/AlekyC)
+- [@CristianCastro123](https://github.com/CristianCastro123)
+
 ---
 
-### Capturas de Pantalla 📸
-*(Incluye algunas capturas de pantalla de la aplicación aquí para mostrar la interfaz y funcionalidades)*
-
-### Instalación y Configuración ⚙️
-1. **Clonar el repositorio**:
-    ```bash
-    git clone https://github.com/AlekyC/udec-soft.git
-    cd udec-soft
-    ```
-2. **Crear y activar un entorno virtual**:
-    ```bash
-    python3 -m venv env
-    source env/bin/activate  # En Windows usa `env\Scripts\activate`
-    ```
-3. **Instalar dependencias**:
-    ```bash
-    pip install -r requirements.txt
-    ```
-4. **Configurar variables de entorno**:
-    *(Incluir aquí detalles sobre cómo configurar las variables de entorno necesarias)*
-5. **Iniciar la aplicación**:
-    ```bash
-    flask run
-    ```
+¡Gracias por usar UDEC-Soft! Esperamos que te ayude a gestionar tus proyectos de software de manera eficiente.
 
